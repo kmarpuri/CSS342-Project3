@@ -1,6 +1,5 @@
 #include <iostream>
 #include "list342.h"
-#include "child.h"
 using namespace std;
 
 int main()

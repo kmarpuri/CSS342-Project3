@@ -5,11 +5,16 @@ set(CMAKE_CXX_STANDARD 14)
 
 include_directories(.)
 
-add_executable(CSS342_Project3
-        child.cpp
+add_executable(main
+        main.cpp
+        list342.h)
+
+add_executable(children
+        children.cpp
         child.h
-        list342.h
-        main.cpp)
+        child.cpp
+        children.txt)
+
 
 configure_file(children.txt children.txt COPYONLY)
 configure_file(main.txt main.txt COPYONLY)
