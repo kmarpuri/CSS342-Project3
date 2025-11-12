@@ -10,3 +10,6 @@ add_executable(CSS342_Project3
         child.h
         list342.h
         main.cpp)
+
+configure_file(children.txt children.txt COPYONLY)
+configure_file(main.txt main.txt COPYONLY)

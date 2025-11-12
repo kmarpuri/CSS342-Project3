@@ -17,38 +17,38 @@ template <class T>
 class List342 {
 public:
     // Constructors
-    List342();
-    List342(const List342& list);
-    ~List342();
+    List342(); // Initializes with empty head_
+    List342(const List342& list); // Initializes with deep copied head_
+    ~List342(); // Destroys List after code is done executing
 
     // Getters
-    Node<T>* head() const;
+    Node<T>* head() const; // Returns head_
 
     // Setters
-    void setHead(Node<T> *node);
+    void setHead(Node<T> *node); // Sets to different head_
 
     // Methods
-    bool BuildList(string file_name);
-    bool Insert(T* data);
-    bool Remove(T target, T& result);
-    bool Peek(T target, T& result);
-    int Size() const;
-    void DeleteList();
-    bool Merge(List342& list);
-    string toString() const;
+    bool BuildList(string file_name); // Reads into a given file creating objects of the chosen type
+    bool Insert(T* data); // Inserts data members and makes sure duplicates aren't created
+    bool Remove(T target, T& result); // Removes the data member that is targeted and returns that value to the result
+    bool Peek(T target, T& result); // Runs the same as the Remove function but doesn't remove the value
+    int Size() const; // Returns the size of the list
+    void DeleteList(); // Deletes all values in the list
+    bool Merge(List342& list); // Merges two lists while maintaining order and no duplicates
+    string toString() const; // Returns a readable representation of the list
 
     // Operator Overloads
-    List342& operator=(const List342& list);
-    List342 operator+(const List342& list) const;
-    List342& operator+=(const List342& list);
-    bool operator==(const List342& list) const;
-    bool operator!=(const List342& list) const;
+    List342& operator=(const List342& list); // Does a deep copy of the list to the given list
+    List342 operator+(const List342& list) const; // Returns a merged copy of the two lists inputted
+    List342& operator+=(const List342& list); // Merges two given lists without editing the second one
+    bool operator==(const List342& list) const; // Compares two lists for equals
+    bool operator!=(const List342& list) const; // Compares two lists for not equals
     template <class U>
-    friend ostream& operator<<(ostream& os, const List342<U>& list);
+    friend ostream& operator<<(ostream& os, const List342<U>& list); // Outputs the list to the given output stream
 
 private:
     // Private Variables
-    Node<T>* head_;
+    Node<T>* head_; // Holds the data as nodes in head_
 };
 
 // Constructors
@@ -81,16 +81,16 @@ void List342<T>::setHead(Node<T> *node) {
 // List Methods
 template <class T>
 bool List342<T>::BuildList(string file_name) {
-    ifstream f(file_name);
-    if (!f.is_open()) {
+    ifstream file(file_name);
+    if (!file.is_open()) {
         return false;
     }
 
     T obj;
-    while (f >> obj) {
+    while (file >> obj) {
         this->Insert(new T(obj));
     }
-    f.close();
+    file.close();
     return true;
 }
 template <class T>
